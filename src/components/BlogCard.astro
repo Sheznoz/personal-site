@@ -1,6 +1,5 @@
 ---
-import { getCollection } from "astro:content";
-const { id, title, author, description, pubDate } = Astro.props
+const { id, title, author, description, pubDate, tags } = Astro.props
 const date = new Date(pubDate).toLocaleDateString("en-AU", {
 	year: "numeric",
 	month: "short",
@@ -11,8 +10,12 @@ const date = new Date(pubDate).toLocaleDateString("en-AU", {
 <div class="blog-card">
   <a href={`/blog/${id}`}>
     <div class="size-full">
-      <h3>{title}</h3>
-      <small class="text-slate-400/90 italic">{author} - {date}</small>
+      <h3 class="inline">{title}</h3>
+      <small class="inline">{tags.map((tag: any) => {
+        return (`#${tag} `)
+      })}
+      </small>
+      <small class="blog-author-date">{author} - {date}</small>
       <p class="blog-description">{description}</p>
     </div>
   </a>

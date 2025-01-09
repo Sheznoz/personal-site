@@ -148,4 +148,7 @@ body:has(.primary-nav.open)::before {
   .blog-description {
     @apply sm:hidden md:block;
   }
+  .blog-author-date {
+    @apply text-slate-400/90 italic block;
+  }
 }
