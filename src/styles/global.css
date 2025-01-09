@@ -58,7 +58,7 @@ body:has(.primary-nav.open)::before {
   }
 
   .wordmark {
-    @apply italic text-3xl text-white/60 hover:text-white cursor-pointer p-0;
+    @apply italic text-2xl text-white/60 hover:text-white cursor-pointer p-0;
   }
 
   .primary-nav {
