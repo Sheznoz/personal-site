@@ -1,0 +1,19 @@
+---
+import { getCollection } from "astro:content";
+const { id, title, author, description, pubDate } = Astro.props
+const date = new Date(pubDate).toLocaleDateString("en-AU", {
+	year: "numeric",
+	month: "short",
+	day: "numeric",
+});
+---
+
+<div class="blog-card">
+  <a href={`/blog/${id}`}>
+    <div class="size-full">
+      <h3>{title}</h3>
+      <small class="italic">{author} - {date}</small>
+      <p class="blog-description">{description}</p>
+    </div>
+  </a>
+</div>

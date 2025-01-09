@@ -1,0 +1,26 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import BlogCard from "../components/BlogCard.astro";
+const [...posts] = (await getCollection("blog")).sort(
+  (a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate)
+);
+const pageTitle = "Blog";
+---
+
+<Layout title={pageTitle}>
+  <h1>Posts</h1>
+  {
+    posts.map((post: any) => {
+      return (
+        <BlogCard
+          id={post.id}
+          title={post.data.title}
+          author={post.data.author}
+          description={post.data.description}
+          pubDate={post.data.pubDate}
+        />
+      );
+    })
+  }
+</Layout>
