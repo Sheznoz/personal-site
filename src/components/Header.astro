@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+import burgerIcon from "../assets/icons/hamburger.svg";
+---
+
+<header transition:persist="header">
+    <a href="/"><h1 class="wordmark">Sheznoz</h1></a>
+  <nav class="primary-nav">
+    <a class="close" onclick="hamburgerMenu()">CLOSE</a>
+    <a id="blog" href="/blog">Blog</a>
+    <a id="projects" href="/projects">Projects</a>
+    <a id="credits" href="/credits">Credits</a>
+  </nav>
+    <a class="hamburger" onclick="hamburgerMenu()"><Image src={burgerIcon} alt="Menu" /></a>
+</header>
+
+<script>
+
+function setActiveLink() {
+const route = "/" + window.location.pathname.split("/")[1];
+  document.querySelectorAll(".primary-nav a").forEach((link) => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") == route) {
+      link.classList.add("active");
+    }
+  })
+};
+
+document.addEventListener("astro:after-swap", setActiveLink);
+document.addEventListener("astro:page-load", setActiveLink);
+</script>
+
+<script is:inline>
+
+function closeMenu() {
+  document.querySelector(".primary-nav").classList.remove("open");
+}
+document.addEventListener("astro:after-swap", closeMenu);
+document.addEventListener("astro:page-load", closeMenu);
+
+function hamburgerMenu() {
+const navMenu = document.querySelector(".primary-nav");
+if (navMenu?.classList.contains("open")) {
+  navMenu?.classList.remove("open")
+} else {
+  navMenu?.classList.add("open")
+}};
+</script>

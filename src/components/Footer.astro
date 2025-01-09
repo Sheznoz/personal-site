@@ -1,0 +1,26 @@
+---
+import { Image } from "astro:assets";
+import githubLogo from "../assets/icons/github.svg";
+import linkedinLogo from "../assets/icons/linkedin.svg";
+import discordLogo from "../assets/icons/discord.svg";
+import xIcon from "../assets/icons/x.svg";
+
+---
+
+
+<footer>
+    <nav class="footer-nav">
+        <a href="https://github.com/Sheznoz/" target="_blank">
+            <Image src={githubLogo} alt="Github" width="30" height="30" />
+        </a>
+        <a href="https://www.linkedin.com/in/riley-sherrington-882942182" target="_blank">
+            <Image src={linkedinLogo} alt="LinkedIn" width="30" height="30" />
+        </a>
+        <a href="https://discordapp.com/users/88154340497297408" target="_blank">
+            <Image src={discordLogo} alt="Discord" width="35" height="35" />
+        </a>
+        <a href="https://x.com/RileySherringt1" target="_blank">
+            <Image src={xIcon} alt="Twitter/X" width="30" height="30" />
+        </a>
+    </nav>
+</footer>
