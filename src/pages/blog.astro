@@ -9,7 +9,40 @@ const pageTitle = "Blog";
 ---
 
 <Layout title={pageTitle}>
-  <h1>Posts</h1>
+  <div class="inline bg-slate-50">
+  <h1 class="inline">Posts</h1>
+
+  <input
+  class="blog-search"
+    type="text"
+    id="searchInput"
+    placeholder="search..."
+    oninput="handleSearch(event)"
+  />
+</div>
+  <script>
+    let blogIndex: any[];
+
+    async function fetchBlogIndex() {
+      const response = await fetch('/api/blog-index.json');
+      const data = await response.json();
+      blogIndex = data;
+    }
+
+    function handleSearch(event: any) {
+      const query = event.target.value.trim().toLowerCase();
+
+      const filteredPosts = blogIndex.filter((post) => {
+        return (
+          post.title.toLowerCase().includes(query) ||
+          post.description.toLowerCase().includes(query) ||
+          post.author.toLowerCase().includes(query) ||
+          post.pubDate.toLowerCase().includes(query) ||
+          post.tags.toLowerCase().includes(query)
+        );
+      });
+    }
+  </script>
   {
     posts.map((post: any) => {
       return (

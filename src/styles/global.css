@@ -40,19 +40,18 @@
     @apply font-mono bg-slate-800 text-gray-300 overflow-x-hidden;
   }
 
-
-body > div.mobile-overflow {
-  @apply overflow-x-clip min-h-screen flex flex-col place-items-center;
-}
+  body > div.mobile-overflow {
+    @apply overflow-x-clip min-h-screen flex flex-col place-items-center;
+  }
 
   body > div > * {
     @apply w-[100%] max-w-[800px];
   }
 
-body:has(.primary-nav.open)::before {
- content: '';
-@apply w-full h-full fixed bg-slate-950/50 backdrop-blur-sm z-0;
-}
+  body:has(.primary-nav.open)::before {
+    content: "";
+    @apply w-full h-full fixed bg-slate-950/50 backdrop-blur-sm z-0;
+  }
   header {
     @apply flex justify-between items-center h-auto sticky top-0 sm:pt-0 md:pt-2 bg-slate-800 select-none px-4;
   }
@@ -134,13 +133,13 @@ body:has(.primary-nav.open)::before {
   }
 
   .four-oh-four {
-  @apply flex-1 flex items-start justify-center mt-12;
- }
+    @apply flex-1 flex items-start justify-center mt-12;
+  }
 
-.four-oh-four > h1 {
-  @apply whitespace-nowrap border border-x-8 border-y-8 border-slate-800 p-4 text-center;
-}
-  
+  .four-oh-four > h1 {
+    @apply whitespace-nowrap border border-x-8 border-y-8 border-slate-800 p-4 text-center;
+  }
+
   .footer-nav {
     @apply flex items-center;
   }
@@ -151,7 +150,17 @@ body:has(.primary-nav.open)::before {
 
 @layer components {
   .blog-card {
-    @apply w-full h-fit border-2 border-transparent hover:border-slate-400 my-3 bg-slate-500/10 p-6 sm:text-center md:text-left;
+    @apply w-full h-fit border-2 border-transparent my-3 bg-slate-500/10 p-6 sm:text-center md:text-left;
+  }
+
+  .blog-card:has(.blog-description:hover) {
+    @apply border-slate-400;
+  }
+  .blog-card:has(.blog-title:hover) {
+    @apply border-slate-400;
+  }
+  .blog-card:has(.blog-author-date:hover) {
+    @apply border-slate-400;
   }
   .blog-description {
     @apply sm:hidden md:block;
@@ -159,4 +168,7 @@ body:has(.primary-nav.open)::before {
   .blog-author-date {
     @apply text-slate-400/90 italic block;
   }
+.blog-search {
+  @apply bg-slate-800;
+}
 }
