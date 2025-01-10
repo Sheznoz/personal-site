@@ -106,7 +106,7 @@ body:has(.primary-nav.open)::before {
   }
 
   hr {
-    @apply -z-10;
+    @apply -z-10 my-4 opacity-25;
   }
 
   p {
@@ -133,6 +133,14 @@ body:has(.primary-nav.open)::before {
     @apply flex h-min justify-center bg-slate-900;
   }
 
+  .four-oh-four {
+  @apply flex-1 flex items-start justify-center mt-12;
+ }
+
+.four-oh-four > h1 {
+  @apply whitespace-nowrap border border-x-8 border-y-8 border-slate-800 p-4 text-center;
+}
+  
   .footer-nav {
     @apply flex items-center;
   }

@@ -10,7 +10,7 @@ const date = new Date(pubDate).toLocaleDateString("en-AU", {
 <div class="blog-card">
   <a href={`/blog/${id}`}>
     <div class="size-full">
-      <h3 class="inline">{title}</h3>
+      <h3 class="md:inline">{title}</h3>
       {tags.map((tag: any) => {
         const href = `/blog/${tag}`
         return (<a href={href}> <small class="hover:bg-slate-500 px-1">#{tag}</small></a>)

@@ -1,10 +1,11 @@
 # TODO:
 
-- Content collection for blog posts
-- BlogNav component
-  - search feature
+- ~~Content collection for blog posts~~
+- ~~filter on tags feature~~
+- blog search feature
 - Start compiling credits
-- Error 500 page
+- Write getting started blog post
+- ~~Error 500 page~~
 
 <pre>
 
@@ -26,32 +27,10 @@
 - Pro pic of me
 - Work history (?)
 
-3. Blog section
+3. ~~Blog section~~
 
-- preview blog component
-  - list? cards?
-- Side nav bar in this route group
-  - shows blogs with related tags to current blog
-  - search bar
-  - index/archive?
-- blog page, standard blog type stuff
-
-<pre>
-
-
-
-</pre>
----
-
-# this is heading 1
-
-## this is heading 2
-
-### this is heading 3
-
-this is just standard text
-
----
+- ~~preview blog component~~
+- ~~blog page, standard blog type stuff~~
 
 <pre>
 
