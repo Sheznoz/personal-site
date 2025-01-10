@@ -12,7 +12,6 @@ const pageTitle = "Blog";
   <h1>Posts</h1>
   {
     posts.map((post: any) => {
-      console.log(post.data.tags);
       return (
         <BlogCard
           id={post.id}
