@@ -7,7 +7,14 @@ const date = new Date(pubDate).toLocaleDateString("en-AU", {
 });
 ---
 
-<div class="blog-card">
+<div class="blog-card"
+data-title={title}
+data-id={id}
+data-author={author}
+data-description={description}
+data-pubDate={pubDate}
+data-tags={tags.join(' ')}
+>
   <div class="size-full md:inline">
     <a href={`/blog/${id}`}>
       <h3 class="md:inline blog-title">{title}</h3>

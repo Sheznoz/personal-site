@@ -9,52 +9,83 @@ const pageTitle = "Blog";
 ---
 
 <Layout title={pageTitle}>
-  <div class="inline bg-slate-50">
-  <h1 class="inline">Posts</h1>
+  <div class="inline-block relative md:pb-2 sm:w-2/3 sm:overflow-hidden -z-5">
+    <h1 class="inline-flex pb-0">Posts</h1>
 
-  <input
-  class="blog-search"
-    type="text"
-    id="searchInput"
-    placeholder="search..."
-    oninput="handleSearch(event)"
-  />
-</div>
+    <input
+      class="blog-search"
+      type="text"
+      id="searchInput"
+      placeholder="search..."
+      value=""
+    />
+  </div>
+  <div id="blogsContainer">
+    {
+      posts.map((post: any) => {
+        return (
+          <BlogCard
+            id={post.id}
+            title={post.data.title}
+            author={post.data.author}
+            description={post.data.description}
+            pubDate={post.data.pubDate}
+            tags={post.data.tags}
+          />
+        );
+      })
+    }
+  </div>
   <script>
     let blogIndex: any[];
 
-    async function fetchBlogIndex() {
-      const response = await fetch('/api/blog-index.json');
+    document.addEventListener("DOMContentLoaded", async () => {
+      const response = await fetch("/api/blog-index.json");
       const data = await response.json();
       blogIndex = data;
-    }
+    });
 
-    function handleSearch(event: any) {
-      const query = event.target.value.trim().toLowerCase();
+    const searchInput = document.getElementById(
+      "searchInput"
+    ) as HTMLInputElement;
+    const blogCards = document.querySelectorAll(
+      ".blog-card"
+    ) as NodeListOf<HTMLDivElement>;
 
-      const filteredPosts = blogIndex.filter((post) => {
-        return (
-          post.title.toLowerCase().includes(query) ||
-          post.description.toLowerCase().includes(query) ||
-          post.author.toLowerCase().includes(query) ||
-          post.pubDate.toLowerCase().includes(query) ||
-          post.tags.toLowerCase().includes(query)
-        );
+    searchInput.value = "";
+
+    let debounceTimer: any;
+
+    const debounce: any = (callback: any, delay: any) => {
+      return function (...args: any) {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          callback(...args);
+        }, delay);
+      };
+    };
+
+    function handleSearch() {
+      const query = searchInput.value.trim().toLowerCase();
+      if (query === "") {
+        blogCards.forEach((card: any) => {
+          card.classList.remove("hidden");
+        });
+        return;
+      }
+      blogCards.forEach((card) => {
+        const { id, title, description, author, pubDate, tags } = card.dataset;
+        const searchableText = [id, title, description, author, pubDate, tags]
+          .join(" ")
+          .toLowerCase();
+        if (searchableText.includes(query)) {
+          card.classList.remove("hidden");
+        } else {
+          card.classList.add("hidden");
+        }
       });
     }
+
+    searchInput?.addEventListener("input", debounce(handleSearch, 300));
   </script>
-  {
-    posts.map((post: any) => {
-      return (
-        <BlogCard
-          id={post.id}
-          title={post.data.title}
-          author={post.data.author}
-          description={post.data.description}
-          pubDate={post.data.pubDate}
-          tags={post.data.tags}
-        />
-      );
-    })
-  }
 </Layout>
