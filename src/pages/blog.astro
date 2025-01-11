@@ -3,13 +3,13 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import BlogCard from "../components/BlogCard.astro";
 const [...posts] = (await getCollection("blog")).sort(
-  (a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate)
+  (a, b) => (new Date(b.data.pubDate) as any) - (new Date(a.data.pubDate) as any)
 );
 const pageTitle = "Blog";
 ---
 
 <Layout title={pageTitle}>
-  <div class="inline-block relative md:pb-2 sm:w-2/3 sm:overflow-hidden -z-5">
+  <div class="inline-flex sm:overflow-hidden justify-between">
     <h1 class="inline-flex pb-0">Posts</h1>
 
     <input
@@ -37,6 +37,7 @@ const pageTitle = "Blog";
     }
   </div>
   <script>
+import debounce from "../utils/debounce.js";
     let blogIndex: any[];
 
     document.addEventListener("DOMContentLoaded", async () => {
@@ -54,17 +55,6 @@ const pageTitle = "Blog";
 
     searchInput.value = "";
 
-    let debounceTimer: any;
-
-    const debounce: any = (callback: any, delay: any) => {
-      return function (...args: any) {
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(() => {
-          callback(...args);
-        }, delay);
-      };
-    };
-
     function handleSearch() {
       const query = searchInput.value.trim().toLowerCase();
       if (query === "") {
@@ -74,8 +64,9 @@ const pageTitle = "Blog";
         return;
       }
       blogCards.forEach((card) => {
-        const { id, title, description, author, pubDate, tags } = card.dataset;
-        const searchableText = [id, title, description, author, pubDate, tags]
+        const { id, title, description, author, date, tags } = card.dataset;
+        console.log(date);
+        const searchableText = [id, title, description, author, date, tags]
           .join(" ")
           .toLowerCase();
         if (searchableText.includes(query)) {

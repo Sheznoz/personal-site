@@ -2,9 +2,10 @@
 
 - ~~Content collection for blog posts~~
 - ~~filter on tags feature~~
-- blog search feature
-- Start compiling credits
+- ~~blog search feature~~
+- ~~Start compiling credits~~
 - Write getting started blog post
+- Search should highlight text too
 - ~~Error 500 page~~
 
 <pre>

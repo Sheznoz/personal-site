@@ -1,0 +1,11 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Content } from "../assets/about.md";
+const pageTitle = "About";
+---
+
+<Layout title={pageTitle}>
+  <div class="markdown">
+    <Content />
+  </div>
+</Layout>

@@ -8,11 +8,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'mono': ['SpaceMono', defaultTheme.fontFamily.mono],
+        'mono': ['JetBrainsMono', defaultTheme.fontFamily.mono],
       }
     },
-  },
-  theme: {
     screens: {
 
       'sm': '0px',
