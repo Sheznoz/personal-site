@@ -2,7 +2,7 @@
 const { id, title, author, description, pubDate, tags } = Astro.props;
 const date = new Date(pubDate).toLocaleDateString("en-AU", {
   year: "numeric",
-  month: "short",
+  month: "long",
   day: "numeric",
 });
 ---

@@ -1,8 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Content } from "../assets/home.md";
 const pageTitle = "Home Page";
 ---
 
 <Layout title={pageTitle}>
-
+  <div class="markdown">
+    <Content />
+  </div>
 </Layout>

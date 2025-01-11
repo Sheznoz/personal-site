@@ -128,7 +128,7 @@
   }
 
   h2 {
-    @apply md:text-2xl sm:text-xl font-bold;
+    @apply md:text-2xl sm:text-xl pb-2 font-bold;
   }
 
   h3 {
