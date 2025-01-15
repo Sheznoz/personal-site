@@ -3,80 +3,89 @@ import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import BlogCard from "../components/BlogCard.astro";
 const [...posts] = (await getCollection("blog")).sort(
-  (a, b) => (new Date(b.data.pubDate) as any) - (new Date(a.data.pubDate) as any)
+	(a, b) =>
+		(new Date(b.data.pubDate) as any) - (new Date(a.data.pubDate) as any),
 );
 const pageTitle = "Blog";
 ---
 
 <Layout title={pageTitle}>
-  <div class="inline-flex sm:overflow-hidden justify-between">
-    <h1 class="inline-flex pb-0">Posts</h1>
+	<div class="inline-flex sm:overflow-hidden justify-between">
+		<h1 class="inline-flex pb-0">Posts</h1>
 
-    <input
-      class="blog-search"
-      type="text"
-      id="searchInput"
-      placeholder="search..."
-      value=""
-    />
-  </div>
-  <div id="blogsContainer">
-    {
-      posts.map((post: any) => {
-        return (
-          <BlogCard
-            id={post.id}
-            title={post.data.title}
-            author={post.data.author}
-            description={post.data.description}
-            pubDate={post.data.pubDate}
-            tags={post.data.tags}
-          />
-        );
-      })
-    }
-  </div>
-  <script>
-import debounce from "../utils/debounce.js";
-    let blogIndex: any[];
+		<input
+			class="blog-search"
+			type="text"
+			id="searchInput"
+			placeholder="search..."
+			value=""
+		/>
+	</div>
+	<div id="blogsContainer">
+		{
+			posts.map((post: any) => {
+				return (
+					<BlogCard
+						id={post.id}
+						title={post.data.title}
+						author={post.data.author}
+						description={post.data.description}
+						pubDate={post.data.pubDate}
+						tags={post.data.tags}
+					/>
+				);
+			})
+		}
+	</div>
+	<script>
+		import debounce from "../utils/debounce.js";
+		//let blogIndex: any[];
 
-    document.addEventListener("DOMContentLoaded", async () => {
-      const response = await fetch("/api/blog-index.json");
-      const data = await response.json();
-      blogIndex = data;
-    });
+		//document.addEventListener("DOMContentLoaded", async () => {
+		//	const response = await fetch("/api/blog-index.json");
+		//	const data = await response.json();
+		//	blogIndex = data;
+		//});
 
-    const searchInput = document.getElementById(
-      "searchInput"
-    ) as HTMLInputElement;
-    const blogCards = document.querySelectorAll(
-      ".blog-card"
-    ) as NodeListOf<HTMLDivElement>;
+		const searchInput = document.getElementById(
+			"searchInput",
+		) as HTMLInputElement;
+		const blogCards = document.querySelectorAll(
+			".blog-card",
+		) as NodeListOf<HTMLDivElement>;
 
-    searchInput.value = "";
+		searchInput.value = "";
 
-    function handleSearch() {
-      const query = searchInput.value.trim().toLowerCase();
-      if (query === "") {
-        blogCards.forEach((card: any) => {
-          card.classList.remove("hidden");
-        });
-        return;
-      }
-      blogCards.forEach((card) => {
-        const { id, title, description, author, date, tags } = card.dataset;
-        console.log(date);
-        const searchableText = [id, title, description, author, date, tags]
-          .join(" ")
-          .toLowerCase();
-        if (searchableText.includes(query)) {
-          card.classList.remove("hidden");
-        } else {
-          card.classList.add("hidden");
-        }
-      });
-    }
+		function handleSearch() {
+			const query = searchInput.value.trim().toLowerCase();
+			if (query === "") {
+				blogCards.forEach((card: any) => {
+					card.classList.remove("hidden");
+				});
+				return;
+			}
+			blogCards.forEach((card) => {
+				const { id, title, description, author, date, tags } =
+					card.dataset;
+				console.log(date);
+				const searchableText = [
+					id,
+					title,
+					description,
+					author,
+					date,
+					tags,
+				]
+					.join(" ")
+					.toLowerCase();
+				if (searchableText.includes(query)) {
+					card.classList.remove("hidden");
+				} else {
+					card.classList.add("hidden");
+				}
+			});
+		}
 
-    searchInput?.addEventListener("input", debounce(handleSearch, 300));
-  </script>
+		searchInput?.addEventListener("input", debounce(handleSearch, 300));
+	</script>
 </Layout>
