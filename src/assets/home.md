@@ -5,7 +5,7 @@
 
 
 </pre>
-This website is primarily a blog for me to track my own development journey. I feel that learning in public is a good way to get feedback on my work from the wider community. This site also serves as a portfolio for any personal projects I have worked on. If you have any feedback please message me via [twitter](https://x.com/RileySherringt1), [discord](https://discordapp.com/users/88154340497297408), or even [linkedIn](https://www.linkedin.com/in/riley-sherrington-882942182)
+This website is primarily a blog for me to track my own development journey. I feel that learning in public is a good way to get feedback on my work from the wider community. This site also serves as a portfolio for any projects I have worked on. If you have any feedback please message me via [twitter](https://x.com/RileySherringt1), [discord](https://discordapp.com/users/88154340497297408), or even [linkedIn](https://www.linkedin.com/in/riley-sherrington-882942182)
 
 ---
 
