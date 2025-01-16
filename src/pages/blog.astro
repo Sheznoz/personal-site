@@ -57,17 +57,36 @@ const pageTitle = "Blog";
 		searchInput.value = "";
 
 		function handleSearch() {
+			let returnedCards: HTMLDivElement[];
+			returnedCards = [];
 			const query = searchInput.value.trim().toLowerCase();
 			if (query === "") {
 				blogCards.forEach((card: any) => {
 					card.classList.remove("hidden");
+
+					let elements: any[] = [
+						card.querySelector(".blog-title"),
+						card.querySelector(".blog-author-date"),
+						card.querySelector(".blog-description"),
+					];
+
+					elements.forEach((element: Element) => {
+						if (element.className.includes("title")) {
+							element.innerHTML = card.dataset.title;
+						} else if (element.className.includes("author")) {
+							element.innerHTML = `${card.dataset.author} - ${card.dataset.date}`;
+						} else if (element.className.includes("description")) {
+							element.innerHTML = card.dataset.description;
+						}
+					});
 				});
+
 				return;
 			}
+
 			blogCards.forEach((card) => {
 				const { id, title, description, author, date, tags } =
 					card.dataset;
-				console.log(date);
 				const searchableText = [
 					id,
 					title,
@@ -78,11 +97,65 @@ const pageTitle = "Blog";
 				]
 					.join(" ")
 					.toLowerCase();
+
 				if (searchableText.includes(query)) {
+					returnedCards.push(card);
 					card.classList.remove("hidden");
 				} else {
 					card.classList.add("hidden");
 				}
+			});
+
+			returnedCards.forEach((card) => {
+				let elements: any[];
+				elements = [
+					card.querySelector(".blog-title"),
+					card.querySelector(".blog-author-date"),
+					card.querySelector(".blog-description"),
+				];
+
+				elements.forEach((element: Element) => {
+					if (element.className.includes("title")) {
+						element.innerHTML = `${card.dataset.title}`;
+					} else if (element.className.includes("author")) {
+						element.innerHTML = `${card.dataset.author} - ${card.dataset.date}`;
+					} else if (element.className.includes("description")) {
+						element.innerHTML = `${card.dataset.description}`;
+					}
+
+					console.log(element.className);
+					let htmlStr = element.innerHTML;
+					let compareStr = htmlStr.toLowerCase();
+					if (compareStr.includes(query)) {
+						let slicePos = compareStr.indexOf(query);
+						let slicedStr = htmlStr.slice(
+							slicePos,
+							query.length + slicePos,
+						);
+						let appendedStr = `<span class="highlight">${slicedStr}</span>`;
+						let newStr = htmlStr.replace(slicedStr, appendedStr);
+						element.innerHTML = newStr;
+					}
+				});
+				//
+				//console.log(elements);
+				//for (
+				//	let child = card.firstChild;
+				//	child !== null;
+				//	child = child.nextSibling
+				//) {
+				//	if (child.innerHTML == undefined) {
+				//		console.log(undefined); // console log
+				//		continue;
+				//	}
+				//	let htmlStr = child.innerHTML;
+				//	let htmlCompare = htmlStr.toLowerCase();
+				//	if (htmlCompare.includes(query)) {
+				//		let slicePos = htmlCompare.match(query);
+				//		console.log(htmlStr); // console log
+				//		console.log(slicePos); // console log
+				//	}
+				//}
 			});
 		}
 

@@ -3,206 +3,209 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "JetBrainsMono";
-  src: url("/fonts/JetBrainsMono-Regular.woff2") format("woff2");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+	font-family: "JetBrainsMono";
+	src: url("/fonts/JetBrainsMono-Regular.woff2") format("woff2");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
-  font-family: "JetBrainsMono";
-  src: url("/fonts/JetBrainsMono-Bold.woff2") format("woff2");
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
+	font-family: "JetBrainsMono";
+	src: url("/fonts/JetBrainsMono-Bold.woff2") format("woff2");
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
-  font-family: "JetBrainsMono";
-  src: url("/fonts/JetBrainsMono-Italic.woff2") format("woff2");
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
+	font-family: "JetBrainsMono";
+	src: url("/fonts/JetBrainsMono-Italic.woff2") format("woff2");
+	font-weight: normal;
+	font-style: italic;
+	font-display: swap;
 }
 
 @font-face {
-  font-family: "JetBrainsMono";
-  src: url("/fonts/JetBrainsMono-BoldItalic.woff2") format("woff2");
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
+	font-family: "JetBrainsMono";
+	src: url("/fonts/JetBrainsMono-BoldItalic.woff2") format("woff2");
+	font-weight: bold;
+	font-style: italic;
+	font-display: swap;
 }
 @font-face {
-  font-family: "SpaceMono";
-  src: url("/fonts/SpaceMono-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "SpaceMono";
-  src: url("/fonts/SpaceMono-Bold.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
+	font-family: "SpaceMono";
+	src: url("/fonts/SpaceMono-Regular.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
-  font-family: "SpaceMono";
-  src: url("/fonts/SpaceMono-Italic.ttf") format("truetype");
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
+	font-family: "SpaceMono";
+	src: url("/fonts/SpaceMono-Bold.ttf") format("truetype");
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
-  font-family: "SpaceMono";
-  src: url("/fonts/SpaceMono-BoldItalic.ttf") format("truetype");
-  font-weight: bold;
-  font-style: italic;
-  font-display: swap;
+	font-family: "SpaceMono";
+	src: url("/fonts/SpaceMono-Italic.ttf") format("truetype");
+	font-weight: normal;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "SpaceMono";
+	src: url("/fonts/SpaceMono-BoldItalic.ttf") format("truetype");
+	font-weight: bold;
+	font-style: italic;
+	font-display: swap;
 }
 
 @layer base {
-  :root {
-    scrollbar-gutter: stable both-edges;
-    @apply font-mono bg-slate-800 text-gray-300 overflow-x-hidden;
-  }
+	:root {
+		scrollbar-gutter: stable both-edges;
+		@apply font-mono bg-slate-800 text-gray-300 overflow-x-hidden;
+	}
 
-  body > div.mobile-overflow {
-    @apply overflow-x-clip min-h-screen flex flex-col place-items-center;
-  }
+	body > div.mobile-overflow {
+		@apply overflow-x-clip min-h-screen flex flex-col place-items-center;
+	}
 
-  body > div > * {
-    @apply w-[100%] max-w-[800px];
-  }
+	body > div > * {
+		@apply w-[100%] max-w-[800px];
+	}
 
-  body:has(.primary-nav.open)::before {
-    content: "";
-    @apply w-full h-full fixed bg-slate-950/50 backdrop-blur-sm z-0;
-  }
-  header {
-    @apply flex justify-between items-center h-auto sticky top-0 sm:pt-0 md:pt-2 bg-slate-800 select-none px-4 z-10;
-  }
+	body:has(.primary-nav.open)::before {
+		content: "";
+		@apply w-full h-full fixed bg-slate-950/50 backdrop-blur-sm z-0;
+	}
+	header {
+		@apply flex justify-between items-center h-auto sticky top-0 sm:pt-0 md:pt-2 bg-slate-800 select-none px-4 z-10;
+	}
 
-  .wordmark {
-    @apply italic text-2xl text-white/60 hover:text-white cursor-pointer p-0;
-  }
+	.wordmark {
+		@apply italic text-2xl text-white/60 hover:text-white cursor-pointer p-0;
+	}
 
-  .primary-nav {
-    @apply flex sm:absolute sm:right-0 sm:translate-x-[250px] md:translate-x-0 sm:flex-col sm:w-[200px] md:w-auto sm:bg-slate-800 sm:top-0 md:flex-row md:static md:bg-transparent transition-all ease-in-out;
-  }
+	.primary-nav {
+		@apply flex sm:absolute sm:right-0 sm:translate-x-[250px] md:translate-x-0 sm:flex-col sm:w-[200px] md:w-auto sm:bg-slate-800 sm:top-0 md:flex-row md:static md:bg-transparent transition-all ease-in-out;
+	}
 
-  .primary-nav a {
-    @apply hover:bg-white/5 p-5 font-bold;
-  }
+	.primary-nav a {
+		@apply hover:bg-white/5 p-5 font-bold;
+	}
 
-  .primary-nav a.active {
-    @apply bg-white/5;
-  }
+	.primary-nav a.active {
+		@apply bg-white/5;
+	}
 
-  .primary-nav a.close {
-    @apply sm:block md:hidden bg-black/25;
-  }
+	.primary-nav a.close {
+		@apply sm:block md:hidden bg-black/25;
+	}
 
-  .primary-nav.open {
-    @apply sm:translate-x-[0] z-50;
-  }
+	.primary-nav.open {
+		@apply sm:translate-x-[0] z-50;
+	}
 
-  a.hamburger {
-    @apply sm:block md:hidden py-4 px-2 cursor-pointer;
-  }
+	a.hamburger {
+		@apply sm:block md:hidden py-4 px-2 cursor-pointer;
+	}
 
-  a.hamburger img {
-    @apply w-8 h-auto;
-  }
+	a.hamburger img {
+		@apply w-8 h-auto;
+	}
 
-  main {
-    @apply flex flex-col flex-1 bg-white/5 p-8;
-  }
+	main {
+		@apply flex flex-col flex-1 bg-white/5 p-8;
+	}
 
-  h1 {
-    @apply md:text-4xl font-bold pb-2 sm:text-2xl;
-  }
+	h1 {
+		@apply md:text-4xl font-bold pb-2 sm:text-2xl;
+	}
 
-  h2 {
-    @apply md:text-2xl sm:text-xl pb-2 font-bold;
-  }
+	h2 {
+		@apply md:text-2xl sm:text-xl pb-2 font-bold;
+	}
 
-  h3 {
-    @apply md:text-xl sm:text-lg;
-  }
+	h3 {
+		@apply md:text-xl sm:text-lg;
+	}
 
-  hr {
-    @apply -z-10 my-4 opacity-25;
-  }
+	hr {
+		@apply -z-10 my-4 opacity-25;
+	}
 
-  p {
-    @apply text-base;
-  }
+	p {
+		@apply text-base;
+	}
 
-  ol {
-    @apply list-decimal list-inside;
-  }
+	ol {
+		@apply list-decimal list-inside;
+	}
 
-  ul {
-    @apply list-disc list-inside;
-  }
+	ul {
+		@apply list-disc list-inside;
+	}
 
-  ul > li {
-    @apply pl-6;
-  }
+	ul > li {
+		@apply pl-6;
+	}
 
-  li > ul {
-    @apply list-[square] pl-2;
-  }
+	li > ul {
+		@apply list-[square] pl-2;
+	}
 
-  footer {
-    @apply flex h-min justify-center bg-slate-900;
-  }
+	footer {
+		@apply flex h-min justify-center bg-slate-900;
+	}
 
-  .four-oh-four {
-    @apply flex-1 flex items-start justify-center mt-12;
-  }
+	.four-oh-four {
+		@apply flex-1 flex items-start justify-center mt-12;
+	}
 
-  .four-oh-four > h1 {
-    @apply whitespace-nowrap border border-x-8 border-y-8 border-slate-800 p-4 text-center;
-  }
+	.four-oh-four > h1 {
+		@apply whitespace-nowrap border border-x-8 border-y-8 border-slate-800 p-4 text-center;
+	}
 
-  .footer-nav {
-    @apply flex items-center;
-  }
-  .footer-nav a {
-    @apply px-10 py-3 hover:invert transition;
-  }
+	.footer-nav {
+		@apply flex items-center;
+	}
+	.footer-nav a {
+		@apply px-10 py-3 hover:invert transition;
+	}
 
-  .markdown a {
-    @apply hover:text-blue-400/90 text-slate-500 hover:underline ;
-  }
+	.markdown a {
+		@apply hover:text-blue-400/90 text-slate-500 hover:underline ;
+	}
 }
 
 @layer components {
-  .blog-card {
-    @apply w-[calc(100%+2rem)] h-fit border-2 border-transparent -mx-4 my-4 bg-slate-500/10 p-4 sm:text-center md:text-left;
-  }
+	.blog-card {
+		@apply w-[calc(100%+2rem)] h-fit border-2 border-transparent -mx-4 my-4 bg-slate-500/10 p-4 sm:text-center md:text-left;
+	}
 
-  .blog-card:has(.blog-description:hover),
-  .blog-card:has(.blog-title:hover),
-  .blog-card:has(.blog-author-date:hover) {
-    @apply border-slate-400;
-  }
-  .blog-description {
-    @apply sm:hidden md:block;
-  }
-  .blog-author-date {
-    @apply text-slate-400/90 italic block;
-  }
-  .blog-search {
-    @apply bg-slate-800 ml-8 px-4 w-72;
-  }
-  .blog-search:focus {
-    @apply outline-none;
-  }
+	.blog-card:has(.blog-description:hover),
+	.blog-card:has(.blog-title:hover),
+	.blog-card:has(.blog-author-date:hover) {
+		@apply border-slate-400;
+	}
+	.blog-description {
+		@apply sm:hidden md:block;
+	}
+	.blog-author-date {
+		@apply text-slate-400/90 italic block;
+	}
+	.blog-search {
+		@apply bg-slate-800 ml-8 px-4 w-72;
+	}
+	.blog-search:focus {
+		@apply outline-none;
+	}
+	.highlight {
+		@apply bg-slate-400;
+	}
 }

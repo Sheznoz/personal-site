@@ -29,6 +29,7 @@ I have since decided that creating software solutions is where my passion lies. 
     - Terraform
     - Ansible
 - AWS
+- Azure
     - EC2
     - IAM
     - RDS

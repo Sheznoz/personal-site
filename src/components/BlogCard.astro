@@ -1,42 +1,51 @@
 ---
 const { id, title, author, description, pubDate, tags } = Astro.props;
 const date = new Date(pubDate).toLocaleDateString("en-AU", {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
+	year: "numeric",
+	month: "long",
+	day: "numeric",
 });
 ---
 
-<div class="blog-card"
-data-title={title}
-data-id={id}
-data-author={author}
-data-description={description}
-data-date={date}
-data-tags={tags.join(' ')}
+<div
+	class="blog-card"
+	data-title={title}
+	data-id={id}
+	data-author={author}
+	data-description={description}
+	data-date={date}
+	data-tags={tags.join(" ")}
 >
-  <div class="size-full md:inline">
-    <a href={`/blog/${id}`}>
-      <h3 class="md:inline blog-title">{title}</h3>
-    </a>
-  </div>
-  {
-    tags.map((tag: any) => {
-      const href = `/blog/${tag}`;
-      return (
-        <a href={href}>
-          {" "}
-          <small class="hover:bg-slate-500 px-1">#{tag}</small>
-        </a>
-      );
-    })
-  }
-  <a href={`/blog/${id}`}>
-    <small class="blog-author-date">{author} - {date}</small>
-  </a>
-  <div class="size-full">
-    <a href={`/blog/${id}`}>
-      <p class="blog-description">{description}</p>
-    </a>
-  </div>
+	<div class="size-full md:inline">
+		<a href={`/blog/${id}`}>
+			<h3 class="md:inline blog-title">{title}</h3>
+		</a>
+	</div>
+	{
+		tags.map((tag: any) => {
+			const href = `/blog/${tag}`;
+			return (
+				<a href={href}>
+		<small class=`hover:bg-slate-500 px-1 blog-tag}`>
+						#{tag}</small>
+				</a>
+			);
+		})
+	}
+	<a href={`/blog/${id}`}>
+		<small class="blog-author-date">{author} - {date}</small>
+	</a>
+	<div class="size-full">
+		<a href={`/blog/${id}`}>
+			<p class="blog-description">{description}</p>
+		</a>
+	</div>
 </div>
+		</a>
+	</div>
+</div>
+		</a>
+	</div>
+</div>
+		</a>
+
