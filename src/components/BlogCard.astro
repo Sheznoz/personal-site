@@ -18,26 +18,26 @@ const date = new Date(pubDate).toLocaleDateString("en-AU", {
 >
 	<div class="size-full md:inline">
 		<a href={`/blog/${id}`}>
-			<h3 class="md:inline blog-title">{title}</h3>
+			<h3 class="md:inline blog-title searchable">{title}</h3>
 		</a>
 	</div>
 	{
 		tags.map((tag: any) => {
 			const href = `/blog/${tag}`;
 			return (
-				<a href={href}>
-		<small class=`hover:bg-slate-500 px-1 blog-tag}`>
+	<a class={tag} href={href}>
+		<small class=`hover:bg-slate-500 px-1 blog-tag searchable`>
 						#{tag}</small>
 				</a>
 			);
 		})
 	}
 	<a href={`/blog/${id}`}>
-		<small class="blog-author-date">{author} - {date}</small>
+		<small class="blog-author-date searchable">{author} - {date}</small>
 	</a>
 	<div class="size-full">
 		<a href={`/blog/${id}`}>
-			<p class="blog-description">{description}</p>
+			<p class="blog-description searchable">{description}</p>
 		</a>
 	</div>
 </div>

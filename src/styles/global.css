@@ -206,6 +206,6 @@
 		@apply outline-none;
 	}
 	.highlight {
-		@apply bg-slate-400;
+		@apply bg-slate-400 text-slate-900;
 	}
 }
