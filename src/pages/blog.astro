@@ -47,6 +47,8 @@ const pageTitle = "Blog";
 			};
 		}
 
+		const searchInput = document.querySelector(".searchInput");
+
 		const blogCards = document.querySelectorAll(".blog-card");
 
 		const nodeMap = {};
@@ -55,21 +57,15 @@ const pageTitle = "Blog";
 		});
 
 		function handleSearch() {
-			var searchInput = document.querySelector(".searchInput");
-			//console.log("handleSearch");
-			//let returnedCards = [];
 			const query = searchInput.value
 				.trim()
 				.toLowerCase()
 				.replace(/([\.\^\$\*\+\?\(\)\[\]\{\}\\\|\/])/g, "\\$&");
-			blogCards.forEach((card) => {
-				console.log(card.innerHTML);
-				card.innerHTML = nodeMap[card.dataset.id].innerHTML;
-				console.log(card.innerHTML);
-				card.classList.remove("hidden");
-			});
 
 			blogCards.forEach((card) => {
+				card.innerHTML = nodeMap[card.dataset.id].innerHTML;
+				card.classList.remove("hidden");
+
 				let elements = card.querySelectorAll(".searchable");
 				card.classList.add("hidden");
 				elements.forEach((element) => {
@@ -171,17 +167,27 @@ const pageTitle = "Blog";
 			//});
 		}
 
+		function unfocusInput(e) {
+			if (e.key == "Enter" || e.keycode == 13) {
+				window.scrollTo(0, window.scrollY + 1);
+				window.scrollTo(0, window.scrollY + -1);
+			}
+		}
+
 		function initializeSearchListener() {
-			var searchInput = document.querySelector(".searchInput");
 			if (searchInput) {
 				searchInput.addEventListener(
 					"input",
 					debounce(handleSearch, 300),
 				);
+				searchInput.addEventListener("keydown", (e) => {
+					unfocusInput(e);
+				});
 			}
 		}
 
 		document.querySelector(".searchInput").value = "";
+
 		initializeSearchListener();
 	</script>
 </Layout>
