@@ -46,31 +46,27 @@ const pageTitle = "Blog";
 				}, delay);
 			};
 		}
+
+		const blogCards = document.querySelectorAll(".blog-card");
+
+		const nodeMap = {};
+		blogCards.forEach((card) => {
+			nodeMap[card.dataset.id] = card.firstElementChild;
+		});
+
 		function handleSearch() {
 			var searchInput = document.querySelector(".searchInput");
 			//console.log("handleSearch");
-			const blogCards = document.querySelectorAll(".blog-card");
 			//let returnedCards = [];
 			const query = searchInput.value
 				.trim()
 				.toLowerCase()
 				.replace(/([\.\^\$\*\+\?\(\)\[\]\{\}\\\|\/])/g, "\\$&");
 			blogCards.forEach((card) => {
+				console.log(card.innerHTML);
+				card.innerHTML = nodeMap[card.dataset.id].innerHTML;
+				console.log(card.innerHTML);
 				card.classList.remove("hidden");
-
-				let elements = card.querySelectorAll(".searchable");
-				elements.forEach((element) => {
-					if (element.classList.contains("blog-title")) {
-						element.innerHTML = `${card.dataset.title}`;
-					} else if (element.classList.contains("blog-author-date")) {
-						element.innerHTML = `${card.dataset.author} - ${card.dataset.date}`;
-					} else if (element.classList.contains("blog-description")) {
-						element.innerHTML = `${card.dataset.description}`;
-					} else if (element.classList.contains("blog-tag")) {
-						// implement blog tag highlight cleaning on empty query
-					}
-					return;
-				});
 			});
 
 			blogCards.forEach((card) => {
